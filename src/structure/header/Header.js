@@ -1,16 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "./Header.css";
 
 export default function Header() {
     return (
         <header className="header">
-            <a href="/">
+            <Link to="/view">
                 <img src="/assets/logo-blue-croped.gif" alt="Blue Edtech" width = "15%" height = "auto"/>
-            </a>
-
-            <a href="/">Listar</a>
-            <a href="/add">Adicionar</a>
+            </Link>
+            <nav>
+                <Link to="/view">Listar</Link>
+                <Link to="/add">Adicionar</Link>
+            </nav>
         </header>
     );
 }
