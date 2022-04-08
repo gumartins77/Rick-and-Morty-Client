@@ -12,11 +12,13 @@ import Register from "../pages/register/Register";
 export default function PageRoutes(){
     return (
         <Routes>
-            <Route path="/" exact={true} element={<VerifyAuth><ReadAll/></VerifyAuth>} />
+            
 
-            <Route path="/login" exact={true} element={<Login/>} />
+            <Route path="/" exact={true} element={<Login/>} />
 
             <Route path="/register" exact={true} element={<Register/>} />
+
+            <Route path="/view" exact={true} element={<VerifyAuth><ReadAll/></VerifyAuth>} />
 
             <Route path="/view/:id" element={<VerifyAuth><ReadById/></VerifyAuth>} />
 

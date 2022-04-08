@@ -17,7 +17,7 @@ export default function Register(){
                     <Input type={"email"} name={"inputEmail"} description={"Email"} />
                     <Input type={"password"} name={"inputPassword"} description={"Password"}/>
                     <Button description={"Register"} />
-                    <Button description={"Cancel"} className="btn-red"  onClick={(event)=>{event.preventDefault(); navigate('/login')}}/>
+                    <Button description={"Cancel"} className="btn-red"  onClick={(event)=>{event.preventDefault(); navigate('/')}}/>
                 </Fieldset>
             </Form>
         </section >
