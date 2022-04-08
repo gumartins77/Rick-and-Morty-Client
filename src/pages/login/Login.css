@@ -1,6 +1,6 @@
 .app > .login{
     display: flex;
-    height: 90vh;
+    height: auto;
 }
 .login img{
     width: 50%;
