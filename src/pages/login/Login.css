@@ -1,0 +1,8 @@
+.app > .login{
+    display: flex;
+    height: 90vh;
+}
+.login img{
+    width: 50%;
+    border-radius: 5px;
+}

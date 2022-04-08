@@ -1,0 +1,12 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width:min-content;
+    width: 25%;
+    height: auto;
+    background-color: var(--formBk);
+    border-radius: 5px;
+    padding: 1em;
+}

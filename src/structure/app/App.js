@@ -1,15 +1,15 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import Header from '../header/Header';
 import Footer from '../footer/Footer';
-import PageRoutes from "../../routes/PageRoutes";
 import './App.css';
+import PageRoutes from "../../routes/PageRoutes";
+import MenuRoutes from "../../routes/MenuRoutes";
 
 export function App() {
     return (
         <div className="app">
-            <Header />
             <BrowserRouter>
+                <MenuRoutes />
                 <PageRoutes />
             </BrowserRouter>
             <Footer />

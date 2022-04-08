@@ -5,19 +5,26 @@ import { ReadById } from "../components/read-by-id/ReadById";
 import { Create } from "../components/create/Create";
 import { Update } from "../components/update/Update";
 import { Delete } from "../components/delete/Delete";
+import VerifyAuth from "../components/verifyAuth/VerifyAuth";
+import Login from "../pages/login/Login";
+import Register from "../pages/register/Register";
 
 export default function PageRoutes(){
     return (
         <Routes>
-            <Route path="/" exact={true} element={<ReadAll/>} />
+            <Route path="/" exact={true} element={<VerifyAuth><ReadAll/></VerifyAuth>} />
 
-            <Route path="/view/:id" element={<ReadById/>} />
+            <Route path="/login" exact={true} element={<Login/>} />
 
-            <Route path="/add" element={<Create/>} />
+            <Route path="/register" exact={true} element={<Register/>} />
 
-            <Route path="/update/:id" element={<Update/>} />
+            <Route path="/view/:id" element={<VerifyAuth><ReadById/></VerifyAuth>} />
 
-            <Route path="/delete/:id" element={<Delete/>} />
+            <Route path="/add" element={<VerifyAuth><Create/></VerifyAuth>} />
+
+            <Route path="/update/:id" element={<VerifyAuth><Update/></VerifyAuth>} />
+
+            <Route path="/delete/:id" element={<VerifyAuth><Delete/></VerifyAuth>} />
         </Routes>
     );
 }

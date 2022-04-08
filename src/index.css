@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root{
+  --formBk:#3359EC;
+  --boxShadowColor:#ffffff;
+  --fontColor:#ffffff;
+  --btnColor:#0dc507;
+  --btnRedFont:#ffffff;
+  --btnRed:rgb(253, 83, 83);
+}
