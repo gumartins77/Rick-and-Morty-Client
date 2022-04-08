@@ -19,3 +19,23 @@
     width: 100%;
     height: 80%;
 }
+@media screen and (min-width: 0px) {
+    .app{
+        background-color: var(--formBk);
+    }
+}
+@media screen and (min-width: 480px) {
+    .app{
+        background-color:var(--bk) ;
+    }
+}
+@media screen and (min-width: 768px) {
+    .app{
+        background-color:var(--bk) ;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .app{
+        background-color:var(--bk) ;
+    }
+}

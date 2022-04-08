@@ -13,6 +13,7 @@ code {
 }
 
 :root{
+  --bk:#ffffff;
   --formBk:#3359EC;
   --boxShadowColor:#ffffff;
   --fontColor:#ffffff;
