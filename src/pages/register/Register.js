@@ -3,12 +3,12 @@ import Button from "../../components/button/Button";
 import Fieldset from "../../components/fieldset/Fieldset";
 import Form from "../../components/form/Form";
 import Input from "../../components/input/Input";
+import validations from "../../scripts/validatios";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
 
 export default function Register() {
   const navigate = useNavigate();
-
   const register = (event)=>{
     event.preventDefault();
     const preload = {
@@ -18,18 +18,19 @@ export default function Register() {
     }
     console.log(preload);
   }
-
+  
   return (
     <section className="page login">
       <Form onSubmit={register}>
         <img src="/assets/logo-blue-croped.gif" alt="logo blueEdtech"></img>
         <Fieldset>
-          <Input type={"name"} name={"inputName"} description={"Name"} />
-          <Input type={"email"} name={"inputEmail"} description={"Email"} />
+          <Input type={"name"} name={"inputName"} description={"Name"} required={true} />
+          <Input type={"email"} name={"inputEmail"} description={"Email"} required={true} onChange={validations.email}/>
           <Input
             type={"password"}
             name={"inputPassword"}
             description={"Password"}
+            required={true}
           />
           <Button description={"Quero Me Registrar"} />
           <Button
