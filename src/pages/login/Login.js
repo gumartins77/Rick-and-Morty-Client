@@ -9,9 +9,19 @@ import './Login.css';
 
 export default function Login(){
     const navigate = useNavigate();
+
+    const login = (event)=>{
+        event.preventDefault();
+        const preload = {
+            email:event.target.inputEmail.value,
+            password:event.target.inputPassword.value
+        }
+        console.log(preload);
+    }
+
     return (
         <section className='page login'>
-            <Form>
+            <Form onSubmit={login}>
                 <img src='/assets/logo-blue-croped.gif' alt='logo blueEdtech'></img>
                 <Fieldset>
                     <Input type={"email"} name={"inputEmail"} description={"Email"} />
