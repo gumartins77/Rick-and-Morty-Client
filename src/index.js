@@ -1,6 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import { createRoot } from 'react-dom/client';
 
 import { App } from "./structure/app/App";
 
@@ -10,11 +9,10 @@ import "./styles/button.css";
 import "./styles/card.css";
 import "./styles/form.css";
 
-ReactDOM.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(
+  <React.StrictMode>
+      <App />
     </React.StrictMode>,
-    document.getElementById("root")
 );
