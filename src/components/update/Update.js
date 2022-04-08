@@ -52,7 +52,7 @@ export function Update(props) {
     };
 
     return (
-        <div className="update">
+        <div className="page update">
             <form className="form" onSubmit={handleSubmit}>
                 <label htmlFor="nome" className="form__label">
                     Nome:

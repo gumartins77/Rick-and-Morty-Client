@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Form from "../form/Form";
+import Input from "../input/Input";
 import { Api } from "../../api/api";
 
 import "./Create.css";
@@ -29,35 +31,10 @@ export function Create(props) {
     };
 
     return (
-        <div className="create">
-            <form className="form" onSubmit={handleSubmit}>
-                <label htmlFor="nome" className="form__label">
-                    Nome:
-                </label>
-                <br />
-
-                <input
-                    type="text"
-                    id="nome"
-                    name="nome"
-                    className="form__input"
-                />
-                <br />
-
-                <label htmlFor="imagemUrl" className="form__label">
-                    URL da Imagem:
-                </label>
-                <br />
-
-                <input
-                    type="text"
-                    id="imagemUrl"
-                    name="imagemUrl"
-                    className="form__input"
-                    onChange={updatePreview}
-                />
-                <br />
-
+        <div className="page create">
+            <Form onSubmit={handleSubmit}>
+                <Input name={"nome"} description={"Nome:"} />
+                <Input name={"imagemUrl"} description={"URL da Imagem:"} onChange={updatePreview} />
                 {previewImage ? (
                     <div>
                         <span className="form__label">Prévia da imagem:</span>
@@ -78,7 +55,7 @@ export function Create(props) {
                     value="Adicionar"
                     className="button button--green button--full"
                 />
-            </form>
+            </Form>
         </div>
     );
 }

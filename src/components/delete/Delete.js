@@ -14,7 +14,7 @@ export function Delete(props) {
     };
 
     return (
-        <div className="card">
+        <div className="page card">
             Tem certeza que deseja remover este registro?
             <br />
             <br />

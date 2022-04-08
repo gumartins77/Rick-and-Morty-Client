@@ -31,9 +31,9 @@ export default function Register() {
             name={"inputPassword"}
             description={"Password"}
           />
-          <Button description={"Register"} />
+          <Button description={"Quero Me Registrar"} />
           <Button
-            description={"Cancel"}
+            description={"Quero Me Logar"}
             className="btn-red"
             onClick={(event) => {
               event.preventDefault();

@@ -26,8 +26,8 @@ export default function Login(){
                 <Fieldset>
                     <Input type={"email"} name={"inputEmail"} description={"Email"} />
                     <Input type={"password"} name={"inputPassword"} description={"Password"}/>
-                    <Button description={"Login"} />
-                    <Button description={"Go To Register"} className="btn-red" onClick={(event)=>{event.preventDefault(); navigate('/register')}}/>
+                    <Button description={"Quero Me Logar"} />
+                    <Button description={"Quero Me Registrar"} className="btn-red" onClick={(event)=>{event.preventDefault(); navigate('/register')}}/>
                 </Fieldset>
             </Form>
         </section >
