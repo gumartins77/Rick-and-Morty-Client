@@ -1,3 +1,4 @@
+import { toContainHTML } from "@testing-library/jest-dom/dist/matchers";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -10,20 +11,38 @@ import "./ReadAll.css";
 export function ReadAll() {
   // useState
   const [listaResultadoApi, atualizarListaResultadoApi] = useState();
+  const [offset,setOffset] = useState(0);
 
   const {name} = useParams();
-  
+
   const getResult = async()=>{
-    const resultado = await Api.buildApiGetRequest(Api.readAllCharactersUrl());
+    console.log(offset)
+    const resultado = await Api.buildApiGetRequest(Api.readAllCharactersUrl(offset));
     if(!(resultado.status===404)){
 
       const dados = await resultado.json();
       atualizarListaResultadoApi({
         ...listaResultadoApi,
-        data:dados.results
+        data:dados.results,
+        total:dados.total
       });
     }
       
+  }
+
+  const setNext = ()=>{
+    if((listaResultadoApi.total-offset)>8){
+      setOffset(offset+8);
+    }
+  }
+
+  const setPrev = ()=>{
+    if(offset>=8){
+      let temp = offset-8;
+      if(temp>=0){
+        setOffset(temp);
+      }
+    }
   }
 
   const getResultByName = async()=>{
@@ -44,8 +63,7 @@ export function ReadAll() {
     }else{
       getResult();
     }
-    console.log(listaResultadoApi);
-  },[name])
+  },[name,offset])
   // useEffect
 
   if (!listaResultadoApi) {
@@ -54,6 +72,10 @@ export function ReadAll() {
 
   return (
     <section className="page view">
+    <nav className="controller">
+      <div className="back" onClick={setPrev}> {"<"} </div>
+      <div className="next" onClick={setNext}> {">"} </div>
+    </nav>
     <div className="read-all">
       {listaResultadoApi?
         listaResultadoApi.data.map((item, index) => (
