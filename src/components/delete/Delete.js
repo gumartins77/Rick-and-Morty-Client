@@ -1,29 +1,37 @@
+import { useNavigate, useParams } from "react-router-dom";
 import { Api } from "../../api/api";
+import Fieldset from "../fieldset/Fieldset";
+import Button from "../button/Button";
+import Form from "../form/Form";
 
 import "./Delete.css";
 
 export function Delete(props) {
-    const id = props.match.params.id;
-
+    const {id} = useParams();
+    const navigate = useNavigate();
     const handleDelete = async event => {
         event.preventDefault();
 
         await Api.buildApiDeleteRequest(Api.deleteCharacterUrl(id));
 
-        props.history.push("/");
+        navigate("/view");
     };
 
+    const cancel =(event)=>{
+        event.preventDefault();
+        navigate('/view');
+    }
     return (
-        <div className="page card">
-            Tem certeza que deseja remover este registro?
-            <br />
-            <br />
-            <button onClick={handleDelete} className="button button--red">
-                Remover
-            </button>
-            <a href={`/view/${id}`} className="button button--grey">
-                Cancelar
-            </a>
-        </div>
+        <section className="page">
+        <Form onSubmit={handleDelete}>
+            <Fieldset>
+                <label className={"label"} >
+                    Tem certeza que deseja remover este registro?
+                </label>
+                <Button className="button button--red" description={'Remover'} />
+                <Button description={"Cancelar"} className="button button--grey" onClick={cancel}/>
+            </Fieldset>
+        </Form>
+        </section>
     );
 }

@@ -1,6 +1,13 @@
-.read-all {
+.page > .read-all {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: fit-content;
+    max-width: 85%;
+    
+}
+.view{
+    justify-content: flex-start;
 }

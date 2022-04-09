@@ -18,9 +18,12 @@ export default function Login(){
             password:event.target.inputPassword.value
         }
         const response = await Api.buildApiPostRequest(Api.makeLoginUrl(),preload);
-        const result = await response.json();
-        localStorage.setItem('keyLogin',result.key);
-        navigate('/view');
+        await response.json().then(
+            result=>{
+                localStorage.setItem('keyLogin',result.token);
+                navigate('/view');
+            }
+        );
     }
 
     return (

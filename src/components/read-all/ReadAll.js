@@ -12,24 +12,29 @@ export function ReadAll() {
 
   const getResult = async()=>{
     const resultado = await Api.buildApiGetRequest(Api.readAllCharactersUrl());
+    console.log(resultado.status)
+    if(!(resultado.status===404)){
 
-    const dados = await resultado.json();
-
-    atualizarListaResultadoApi({
-      ...listaResultadoApi,
-      data:dados
-    });
+      const dados = await resultado.json();
+      console.log(dados.results)
+      atualizarListaResultadoApi({
+        ...listaResultadoApi,
+        data:dados.results
+      });
+    }
+      
   }
   // useEffect
   useEffect(() => {
     getResult();
-  },[listaResultadoApi]);
+  },[]);
 
   if (!listaResultadoApi) {
     return <div>Carregando...</div>;
   }
 
   return (
+    <section className="page view">
     <div className="read-all">
       {listaResultadoApi?
         listaResultadoApi.data.map((item, index) => (
@@ -38,5 +43,6 @@ export function ReadAll() {
         :null
       }
     </div>
+    </section>
   );
 }

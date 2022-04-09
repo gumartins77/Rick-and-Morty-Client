@@ -1,13 +1,14 @@
 .header {
     background: #3359EC;
     color: #ffffff;
-    height: 10%;
+    height: 2em;
     display: flex;
     flex-direction: row;
     justify-content:space-between;
     align-items: center;
     font-size: 28px;
     width: 100%;
+    max-width: 100%;
     margin: 0;
 }
 .header a img{

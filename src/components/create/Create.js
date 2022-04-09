@@ -2,12 +2,14 @@ import { useState } from "react";
 import Form from "../form/Form";
 import Input from "../input/Input";
 import { Api } from "../../api/api";
-
+import { useNavigate } from 'react-router-dom';
 import "./Create.css";
+import Button from "../button/Button";
+import Fieldset from "../fieldset/Fieldset";
 
 export function Create(props) {
-  const [previewImage, setPreviewImage] = useState("");
-
+  const [previewImage, setPreviewImage] = useState();
+    const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -15,8 +17,9 @@ export function Create(props) {
     const imagemUrl = event.target.imagemUrl.value;
 
     const dados = {
-      nome,
-      imagemUrl,
+        user:"",
+      name:nome,
+      imageUrl:imagemUrl,
     };
 
     const resultado = await Api.buildApiPostAuthRequest(
@@ -25,8 +28,8 @@ export function Create(props) {
     );
 
     const jsonResultado = await resultado.json();
-
-    props.history.push(`/view/${jsonResultado._id}`);
+    console.log(jsonResultado);
+    navigate(`/view/${jsonResultado.character.id}`);
   };
 
   const updatePreview = (event) => {
@@ -37,6 +40,7 @@ export function Create(props) {
     <section className="page">
       <div className="create">
         <Form onSubmit={handleSubmit}>
+            <Fieldset>
           <Input name={"nome"} description={"Nome:"} />
           <Input
             name={"imagemUrl"}
@@ -57,12 +61,8 @@ export function Create(props) {
             ""
           )}
           <br />
-
-          <input
-            type="submit"
-            value="Adicionar"
-            className="button button--green button--full"
-          />
+          </Fieldset>
+          <Button description={"Adicionar"}/>
         </Form>
       </div>
     </section>

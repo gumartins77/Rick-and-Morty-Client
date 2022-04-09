@@ -14,6 +14,7 @@ export default function Input(props) {
         onChange={props.onChange ? props.onChange : null}
         ref={props.ref?props.ref:null}
         required={props.required?true:false}
+        defaultValue={props.defaultValue?props.defaultValue:null}
       />
     </>
   );
