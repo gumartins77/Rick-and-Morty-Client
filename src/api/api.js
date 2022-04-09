@@ -1,15 +1,22 @@
 export const Api = {
 	baseUrl: "http://localhost:3001",
+	keyJwt: localStorage.getItem('keyLogin'),
 
-	createUrl: () => Api.baseUrl + "/personagens",
+	// characters
+	createCharacterUrl: () => Api.baseUrl + "/characters/create",
+	readAllCharactersUrl: () => Api.baseUrl + "/characters",
+	readCharacterByIdUrl: (id) => Api.baseUrl + "/characters/find/" + id,
+	readCharacterByNameUrl:()=>Api.baseUrl + "/characters/search",
+	updateCharacterUrl: (id) => Api.baseUrl + "/characters/update/" + id,
+	deleteCharacterUrl: (id) => Api.baseUrl + "/characters/delete/" + id,
+	deleteAllCharactersUrl: () => Api.baseUrl + "/characters/",
 
-	readAllUrl: () => Api.baseUrl + "/personagens",
-	readSingleUrl: (id) => Api.baseUrl + "/personagens/" + id,
-
-	updateUrl: (id) => Api.baseUrl + "/personagens/" + id,
-
-	deleteUrl: (id) => Api.baseUrl + "/personagens/" + id,
-	deleteAllUrl: () => Api.baseUrl + "/",
+	// login
+	makeLoginUrl:()=>Api.baseUrl + "/auth/login",
+	
+	// Users
+	createUserUrl:()=>Api.baseUrl + "/users/create",
+	readAllUsersUrl:()=>Api.baseUrl + "/users",
 
 	// Create
 	buildApiPostRequest: (url, body) => {
@@ -21,11 +28,37 @@ export const Api = {
 			body: JSON.stringify(body),
 		});
 	},
+	// CreateWithAuth
+	buildApiPostAuthRequest: (url, body) => {
+		return fetch(url, {
+			method: "POST",
+			headers: new Headers({
+				"Content-type": "application/json",
+				'Authorization': 'Bearer ' + Api.keyJwt,
+			}),
+			body: JSON.stringify(body),
+		});
+	},
 
 	// ReadAll
 	buildApiGetRequest: (url) => {
 		return fetch(url, {
 			method: "GET",
+			headers: new Headers({
+				"Content-type": "application/json",
+				'Authorization': 'Bearer ' + Api.keyJwt,
+			}),
+		});
+	},
+	//ReadByBody
+	buildApiGetWithBodyRequest: (url,body) => {
+		return fetch(url, {
+			method: "GET",
+			headers: new Headers({
+				"Content-type": "application/json",
+				'Authorization': 'Bearer ' + Api.keyJwt,
+			}),
+			body: JSON.stringify(body)
 		});
 	},
 
@@ -35,6 +68,7 @@ export const Api = {
 			method: "PUT",
 			headers: new Headers({
 				"Content-type": "application/json",
+				'Authorization': 'Bearer ' + Api.keyJwt,
 			}),
 			body: JSON.stringify(body),
 		});
@@ -44,6 +78,10 @@ export const Api = {
 	buildApiDeleteRequest: (url) => {
 		return fetch(url, {
 			method: "DELETE",
+			headers: new Headers({
+				"Content-type": "application/json",
+				'Authorization': 'Bearer ' + Api.keyJwt,
+			}),
 		});
 	},
 };
