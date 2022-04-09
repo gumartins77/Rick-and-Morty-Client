@@ -1,9 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
+import { useNavigate,Link } from "react-router-dom";
 import "./Header.css";
 
 export default function Header() {
+    const navigate = useNavigate();
+    const logout = ()=>{
+        localStorage.removeItem('keyLogin');
+        navigate('/');
+    }
     return (
         <header className="header">
             <Link to="/view">
@@ -12,6 +16,7 @@ export default function Header() {
             <nav>
                 <Link to="/view">Listar</Link>
                 <Link to="/add">Adicionar</Link>
+                <label className="link" onClick={logout}>Sair</label>
             </nav>
         </header>
     );
