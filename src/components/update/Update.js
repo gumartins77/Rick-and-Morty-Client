@@ -38,7 +38,7 @@ export function Update(props) {
         };
 
         const resultado = await Api.buildApiPutRequest(
-            Api.updateUrl(id),
+            Api.updateCharacterUrl(id),
             dados
         );
 

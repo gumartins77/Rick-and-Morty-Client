@@ -19,7 +19,7 @@ export function Create(props) {
             imagemUrl,
         };
 
-        const resultado = await Api.buildApiPostRequest(Api.createUrl(), dados);
+        const resultado = await Api.buildApiPostAuthRequest(Api.createCharacterUrl(), dados);
 
         const jsonResultado = await resultado.json();
 

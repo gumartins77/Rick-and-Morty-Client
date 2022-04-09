@@ -15,7 +15,7 @@ export function ReadById(props) {
     });
 
     const getItemData = async () => {
-        const resultado = await Api.buildApiGetRequest(Api.readSingleUrl(id));
+        const resultado = await Api.buildApiGetRequest(Api.readCharacterByIdUrl(id));
 
         const dados = await resultado.json();
 

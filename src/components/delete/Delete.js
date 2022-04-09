@@ -8,7 +8,7 @@ export function Delete(props) {
     const handleDelete = async event => {
         event.preventDefault();
 
-        await Api.buildApiDeleteRequest(Api.deleteUrl(id));
+        await Api.buildApiDeleteRequest(Api.deleteCharacterUrl(id));
 
         props.history.push("/");
     };

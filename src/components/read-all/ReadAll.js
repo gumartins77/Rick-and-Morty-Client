@@ -8,22 +8,22 @@ import "./ReadAll.css";
 
 export function ReadAll() {
   // useState
-  const [listaResultadoApi, atualizarListaResultadoApi] = useState("");
+  const [listaResultadoApi, atualizarListaResultadoApi] = useState();
 
-  // useEffect
-  useEffect(() => {
-    if (!listaResultadoApi) {
-      obterResultado();
-    }
-  });
-
-  const obterResultado = async () => {
-    const resultado = await Api.buildApiGetRequest(Api.readAllUrl());
+  const getResult = async()=>{
+    const resultado = await Api.buildApiGetRequest(Api.readAllCharactersUrl());
 
     const dados = await resultado.json();
 
-    atualizarListaResultadoApi(dados);
-  };
+    atualizarListaResultadoApi({
+      ...listaResultadoApi,
+      data:dados
+    });
+  }
+  // useEffect
+  useEffect(() => {
+    getResult();
+  },[listaResultadoApi]);
 
   if (!listaResultadoApi) {
     return <div>Carregando...</div>;
@@ -31,9 +31,12 @@ export function ReadAll() {
 
   return (
     <div className="read-all">
-      {listaResultadoApi.map((item, index) => (
-        <ItemCard item={item} key={index} />
-      ))}
+      {listaResultadoApi?
+        listaResultadoApi.data.map((item, index) => (
+          <ItemCard item={item} key={index} />
+        ))
+        :null
+      }
     </div>
   );
 }

@@ -3,6 +3,7 @@ import Button from '../../components/button/Button';
 import Fieldset from '../../components/fieldset/Fieldset';
 import Form from '../../components/form/Form';
 import Input from '../../components/input/Input';
+import { Api } from '../../api/api';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
@@ -10,13 +11,16 @@ import './Login.css';
 export default function Login(){
     const navigate = useNavigate();
 
-    const login = (event)=>{
+    const login = async(event)=>{
         event.preventDefault();
         const preload = {
             email:event.target.inputEmail.value,
             password:event.target.inputPassword.value
         }
-        console.log(preload);
+        const response = await Api.buildApiPostRequest(Api.makeLoginUrl(),preload);
+        const result = await response.json();
+        localStorage.setItem('keyLogin',result.key);
+        navigate('/view');
     }
 
     return (
