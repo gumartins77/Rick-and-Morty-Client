@@ -29,7 +29,7 @@ export function Create(props) {
 
     const jsonResultado = await resultado.json();
     console.log(jsonResultado);
-    navigate(`/view/${jsonResultado.character.id}`);
+    navigate(`/viewOne/${jsonResultado.character.id}`);
   };
 
   const updatePreview = (event) => {

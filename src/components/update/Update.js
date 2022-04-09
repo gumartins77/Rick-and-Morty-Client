@@ -54,7 +54,7 @@ export function Update(props) {
 
         const jsonResultado = await resultado.json();
 
-        navigate(`/view/${jsonResultado._id}`);
+        navigate(`/viewOne/${jsonResultado._id}`);
     };
 
     const updatePreview = event => {

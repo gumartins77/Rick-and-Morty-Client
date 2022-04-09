@@ -26,7 +26,7 @@ export default function Register() {
   }
   
   return (
-    <section className="page login">
+    <section className="page register">
       <Form onSubmit={register}>
         <img src="/assets/logo-blue-croped.gif" alt="logo blueEdtech"></img>
         <Fieldset>

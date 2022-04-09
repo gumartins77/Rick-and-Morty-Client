@@ -14,12 +14,12 @@ export function Delete(props) {
 
         await Api.buildApiDeleteRequest(Api.deleteCharacterUrl(id));
 
-        navigate("/view");
+        navigate("/view/0");
     };
 
     const cancel =(event)=>{
         event.preventDefault();
-        navigate('/view');
+        navigate('/view/0');
     }
     return (
         <section className="page">

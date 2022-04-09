@@ -6,7 +6,7 @@ export const Api = {
 	createCharacterUrl: () => Api.baseUrl + "/characters/create",
 	readAllCharactersUrl: () => Api.baseUrl + "/characters",
 	readCharacterByIdUrl: (id) => Api.baseUrl + "/characters/find/" + id,
-	readCharacterByNameUrl:()=>Api.baseUrl + "/characters/search",
+	readCharacterByNameUrl:(name)=>Api.baseUrl + "/characters/search?name="+name,
 	updateCharacterUrl: (id) => Api.baseUrl + "/characters/update/" + id,
 	deleteCharacterUrl: (id) => Api.baseUrl + "/characters/delete/" + id,
 	deleteAllCharactersUrl: () => Api.baseUrl + "/characters/",
@@ -48,17 +48,6 @@ export const Api = {
 				"Content-type": "application/json",
 				'Authorization': 'Bearer ' + Api.keyJwt,
 			}),
-		});
-	},
-	//ReadByBody
-	buildApiGetWithBodyRequest: (url,body) => {
-		return fetch(url, {
-			method: "GET",
-			headers: new Headers({
-				"Content-type": "application/json",
-				'Authorization': 'Bearer ' + Api.keyJwt,
-			}),
-			body: JSON.stringify(body)
 		});
 	},
 

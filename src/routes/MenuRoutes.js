@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Header from '../structure/header/Header';
+import {Header} from '../structure/header/Header';
 import VerifyAuth from "../components/verifyAuth/VerifyAuth";
 
 export default function MenuRoutes(){
@@ -11,9 +11,9 @@ export default function MenuRoutes(){
 
             <Route path="/register" exact={true} element={<></>} />
 
-            <Route path="/view" exact={true} element={<VerifyAuth><Header/></VerifyAuth>} />
+            <Route path="/view/:name" exact={true} element={<VerifyAuth><Header search={true} /></VerifyAuth>} />
 
-            <Route path="/view/:id" element={<VerifyAuth><Header/></VerifyAuth>} />
+            <Route path="/viewOne/:id" element={<VerifyAuth><Header/></VerifyAuth>} />
 
             <Route path="/add" element={<VerifyAuth><Header/></VerifyAuth>} />
 

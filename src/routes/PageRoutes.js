@@ -18,9 +18,9 @@ export default function PageRoutes(){
 
             <Route path="/register" exact={true} element={<Register/>} />
 
-            <Route path="/view" exact={true} element={<VerifyAuth><ReadAll/></VerifyAuth>} />
+            <Route path="/view/:name" exact={true} element={<VerifyAuth><ReadAll/></VerifyAuth>} />
 
-            <Route path="/view/:id" element={<VerifyAuth><ReadById/></VerifyAuth>} />
+            <Route path="/viewOne/:id" element={<VerifyAuth><ReadById/></VerifyAuth>} />
 
             <Route path="/add" element={<VerifyAuth><Create/></VerifyAuth>} />
 

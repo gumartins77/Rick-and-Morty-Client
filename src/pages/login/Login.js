@@ -21,7 +21,7 @@ export default function Login(){
         await response.json().then(
             result=>{
                 localStorage.setItem('keyLogin',result.token);
-                navigate('/view');
+                navigate('/view/0');
             }
         );
     }

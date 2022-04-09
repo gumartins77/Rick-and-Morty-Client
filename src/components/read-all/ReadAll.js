@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import { Api } from "../../api/api";
 
@@ -10,13 +11,13 @@ export function ReadAll() {
   // useState
   const [listaResultadoApi, atualizarListaResultadoApi] = useState();
 
+  const {name} = useParams();
+  
   const getResult = async()=>{
     const resultado = await Api.buildApiGetRequest(Api.readAllCharactersUrl());
-    console.log(resultado.status)
     if(!(resultado.status===404)){
 
       const dados = await resultado.json();
-      console.log(dados.results)
       atualizarListaResultadoApi({
         ...listaResultadoApi,
         data:dados.results
@@ -24,10 +25,28 @@ export function ReadAll() {
     }
       
   }
+
+  const getResultByName = async()=>{
+    const resultado = await Api.buildApiGetRequest(Api.readCharacterByNameUrl(name));
+    if(!(resultado.status===404) && !(resultado.status===400)){
+      const dados = await resultado.json();
+      atualizarListaResultadoApi({
+        ...listaResultadoApi,
+        data:dados.characters
+      });
+    }
+      
+  }
+
+  useEffect(()=>{
+    if(name!=="0"){
+      getResultByName();
+    }else{
+      getResult();
+    }
+    console.log(listaResultadoApi);
+  },[name])
   // useEffect
-  useEffect(() => {
-    getResult();
-  },[]);
 
   if (!listaResultadoApi) {
     return <div>Carregando...</div>;
